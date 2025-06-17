@@ -4,6 +4,7 @@ import ReportaPuentesForm from './components/ReportaPuentesForm';
 import ReportaPuentesStats from './components/ReportaPuentesStats';
 import { useLocalStorage } from './utils/storage';
 import { initialReports } from './mock/reports';
+import { Analytics } from '@vercel/analytics/react';  // <-- Nueva línea 
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('form'); // 'form' o 'stats'
@@ -46,6 +47,7 @@ const App = () => {
         {currentPage === 'form' && <ReportaPuentesForm onReportSubmit={handleReportSubmit} />}
         {currentPage === 'stats' && <ReportaPuentesStats reports={reports} />}
       </main>
+      <Analytics /> {/* <-- Añadido para la analítica */}
     </div>
   );
 };
